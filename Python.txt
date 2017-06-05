@@ -23,3 +23,20 @@ print d or b
 输出的结果是：1而不是True
 仅在变量为布尔型的时候才会输出True和False
 
+list和tuple
+list1=[1,2]   这是一个list
+tuple1=(1,2)  这是一个tuple
+list和tuple的一个基本的区别是，list的元素是可以更换的，可以进行插入、删除等等操作，而tuple的元素是不变的
+PS：list和tuple里的元素可以是一个list或者一个tuple，换言之
+list2=[1,[1,2]]是没有问题的
+
+list和tuple的访问
+list1[0],tuple1[0]是左边第一个
+PS：list1[-1],tuple[-1]是倒数第一个
+
+list操作
+list1.append(3) 将3增加到list1的最后一个
+list1.insert(1,'China') 将China插入到list1的第二个位置，list1变成3个元素的list
+list1[1] = 'PRC' 将China改为PRC，替换操作
+list1.pop() 删除list1的最后一个元素
+PS：list1.pop(1) 删除list1的第二个元素，list1的元素个数减一
