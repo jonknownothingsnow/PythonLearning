@@ -1,4 +1,4 @@
-#This is a code writed by the rules of Python2
+#This is a code wrote by the rules of Python2
 
 for bs4 import BeautifulSoup
 import requests
