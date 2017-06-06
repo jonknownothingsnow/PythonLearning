@@ -1,0 +1,28 @@
+st和tuple
+list1=[1,2]   这是一个list
+tuple1=(1,2)  这是一个tuple
+list和tuple的一个基本的区别是，list的元素是可以更换的，可以进行插入、删除等等操作，而tuple的元素是不变的
+PS：list和tuple里的元素可以是一个list或者一个tuple，换言之
+list2=[1,[1,2]]是没有问题的
+
+list和tuple的访问
+list1[0],tuple1[0]是左边第一个
+PS：list1[-1],tuple[-1]是倒数第一个
+
+list操作
+list1.append(3) 将3增加到list1的最后一个
+list1.insert(1,'China') 将China插入到list1的第二个位置，list1变成3个元素的list
+list1[1] = 'PRC' 将China改为PRC，替换操作
+list1.pop() 删除list1的最后一个元素
+PS：list1.pop(1) 删除list1的第二个元素，list1的元素个数减一
+
+使用for可以很轻松的去遍历整个list和tuple（遍历：将集合的元素过一遍）
+for num in list1:
+print num
+就可以轻松的将list1中所有的元素打印出来
+for num in list1:	创建了一个num变量用于指向list1中的元素，按顺序排列，直到最后一个元素，for会自动终止
+
+list的切片
+list[0:(n-1)]	从第一个到第n个的元素，称之为切片
+list的切片可以有第三个元素如
+list[::2]指list每两个取一个，即隔一个取
