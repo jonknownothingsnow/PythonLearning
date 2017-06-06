@@ -9,3 +9,8 @@ print '<table border="1">'
 print '<tr><th>Name</th><th>Score</th><tr>'
 print '\n'.join(tds)
 print '</table>'
+
+def toUppers(L):
+    return [x.upper() for x in L if isinstance(x,str)==True]
+
+print toUppers(['Hello', 'world', 101])
