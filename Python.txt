@@ -29,3 +29,15 @@ d = {
   ......
 }
 操作key可以读取value如d[key1]就会返回key1的value
+
+dict内部是无序的，print一个dict的顺序可能和创建这个dict的顺序不一致
+dict的元素是不可变的，元素指的是key，所以key不可使用可变的元素如list，但value是可以变的，因此key是不可重复的
+dict可以新增key元素，因为是无序的，也就不存在序号了
+d['OG']=0
+会在d中新增一个'OG':0，如果'OG'这个key本来就存在，那么'OG'的值会变更为0
+
+set是dict比较类似的一个东西，通过以下生成
+s =set([1,2,3])
+PS:set和dict的特点一样，不重复、无序。因此在声明时赋值相同的元素，set会自动删除重复的部分
+print 1 in s
+输出的是True
