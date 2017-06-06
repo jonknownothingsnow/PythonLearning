@@ -22,3 +22,10 @@ c and d   因为c为假（空的赋值在Python等于False），d为真（非空
 print d or b
 输出的结果是：1而不是True
 仅在变量为布尔型的时候才会输出True和False
+
+dict
+d = {
+  key:value
+  ......
+}
+操作key可以读取value如d[key1]就会返回key1的value
