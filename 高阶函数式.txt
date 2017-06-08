@@ -1,0 +1,99 @@
+一个可以接收其他函数的函数称为函数式
+
+如
+def f(x):
+    return x*x
+
+ print ft(f,(2,3,4,5))
+
+ 这里的ft通过f将后面的list里面的所有的内容全部乘了一次
+
+Python可以返回函数，不仅仅可以返回int、str、list、dict、tuple等
+def f():
+	print 'China'
+
+	def g():
+		print 'PRC'
+	return g
+
+#这时我们通过一个函数去调用f()
+
+f1 = f()
+print f1()
+
+这时f1()就会调用出f()返回的g()函数，在屏幕输出一个PRC
+
+接下来就是一个跟重要的环节，Python的闭包
+在Java中我学到，一个类会进行封装的操作，用户不需要直到类是怎么写的，只需要调用类提供的借口即可，我感觉Python的闭包和这个应该是有区别的
+
+Python通过闭包保护其中的函数不让用户操作，但Python的用户还是会知道Python的代码是怎么写的，Java通过封装除了保护他的函数不让操作以外，也是保密他的代码很重要的一个手段
+
+def f():
+	print 'China NO.1'
+	def g():
+		print 'PRC NO.1'
+	return g
+
+注意到返回的g的操作是在f()中执行的，但是这样还不能算闭包
+
+def f(x):
+	def g():
+		return sum(x)
+	return g
+
+可以看到g()不仅在f()里面，而且还调用了f()的一个参数，这样才是一个完整的闭包
+闭包的特点是，返回的函数调用了外面的局部变量，因此不能使用循环
+
+def count():
+	fs = []
+	for i in range(1,4):
+		def f():
+			return i*i
+		fs.append(f)
+	return fs
+
+f1,f2,f3 = count()
+
+事实上f1,f2,f3总共调用了3次count()，那么在f1,f2,f3 = count()时，i就已经走到第三位了，因此返回的数值是在count()运算了以后
+使用循环来进行闭包是不理智的
+正确用法应该是这样的
+
+def count():
+	fs = []
+	for i  in range(1,4):
+		def f(j):
+			def g()
+				return j*j
+			return g
+		r = f(i)
+		fs.append(r)
+	return fs
+
+f1,f2,f3 = count()
+print f1(),f2(),f3()
+
+这样的话，输出的结果就会是正确的了
+
+
+匿名函数：
+有时高阶函数不需要显示的写出来PS:比方一些简单的函数
+这时就会用到一个技巧，称为匿名函数
+他的关键词是lambda
+
+map(lambda x:x*x,[1,2,3])
+
+这里的lambda x:x*x等同于
+
+def f(x):
+	return x*x
+
+OS:暂时不知道lambda是否支持print，不知道怎么去试
+
+装饰器：简化Pthon代码
+在定义函数的语句的上方加入一段装饰器语句，函数就被装饰过了
+这样可以大量减少函数的代码重复性
+
+打印日志: @log
+检测性能: @performance
+数据库事务:@transaction
+URL路由:@post('/register')
