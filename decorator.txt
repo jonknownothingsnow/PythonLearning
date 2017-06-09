@@ -1,0 +1,46 @@
+decorator也称为装饰器，装饰器是Python一个比较难已理解的东西，和闭包一样
+
+import time
+def performance(unit):
+    def performance_decorator(f):
+        def fn(*args,**kw):
+            t1=time.time()
+            r=f(*args,**kw)
+            t2=time.time()
+            print 'call %s() in %f%s'%(f.__name__,(t2-t1),unit)
+            return r
+        return fn
+    return performance_decorator
+
+@performance('ms')
+def factorial(n):
+    return reduce(lambda x,y: x*y, range(1, n+1))
+
+print factorial(10)
+
+带参数的一个函数的装饰器，要求的写法比较严谨
+而被装饰器装饰过的函数，其函数的内容会被装饰器修改成装饰器内部的东西
+通过使用functools对装饰器的函数进行再装饰，这个bug就被解决了
+
+import time, functools
+
+def performance(unit):
+    
+    def per(f):
+        @functools.wraps(f)
+        def fn(*args,**kw):
+            t1=time.time()
+            r=f(*args,**kw)
+            t2=time.time()
+            print 'call %s() in %f%s'%(f.__name__,(t2-t1),unit)
+            return r
+        return fn
+    return per
+
+@performance('ms')
+def factorial(n):
+    return reduce(lambda x,y: x*y, range(1, n+1))
+
+print factorial.__name__
+
+Python通过大量简化他的代码，结果使入门难度大幅增加。一个精心设计过的代码往往需要看很久才能懂
