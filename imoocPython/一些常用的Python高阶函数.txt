@@ -1,0 +1,60 @@
+map()
+map()是一个组合的高阶函数，它接收一个函数和一个list，通过把函数依次作用在list的每一个元素上，得到一个新的list返回
+因此接收map()的应当是一个list
+
+def f(x): #这里的f(x)指的是函数f需要接收一个参数
+	return x*x
+
+print map(f,[1,2,3])
+
+以上，定义一个函数的时候往往需要定义它需要接收的参数的个数(和类型)
+PS:强类型的语言，要在参数前输入数据类型如
+public method1(String i)
+
+定义一个可以接收任意个数的函数
+def f(*args,**kw):
+PS:使用任意个数的函数，必须使用闭包操作，因为即使函数可以接收无数个参数
+函数的代码也无法操作不知道具体个数的参数
+
+reduce()
+reduce()接收一个函数和一个list，它传入函数的参数必须接收两个参数
+
+def f(x,y):
+	return x+y
+
+reduce(f,[1,2,3],100) #这里的第三个参数100指的是从100开始算
+
+filter()
+OS:我将filter理解为剔除函数，将list中不符合要求的部分剔除
+它接收一个函数和一个list，通过函数的条件依次判断list的元素
+返回值为True或False	#意味着返回的必须是判断式或者布尔型
+
+def is_not(s):
+	return s and len(s.strip())>0	
+	#s.strip(example)删除字符串中开头、结尾为example序列的字符
+	#example为空的时候，默认删除空白符
+
+filter(is_not,['test',None,'','str','END'])
+
+filter返回的是一个新的list
+
+sorted()
+sorted()是一个排序函数，它比较list中的两个元素
+x>y:return 1
+x<y:return -1
+x=y:return 0
+也就是说sorted通过接收返回的值(-1,0,1)判断先后顺序
+
+def ignore_case(s1,s2):
+	u1=s1.upper()
+	u2=s2.upper()
+	if u1[0]>u2[0]:
+		return 1
+	if u1[0]<u2[0]
+		return -1
+	return 0
+
+print sorted(['bob','about','Adam'],ignore_case)
+#sorted()的list在前，函数在后
+为什么不用else，因为return的时候函数会自动关闭，后续代码不执行
+

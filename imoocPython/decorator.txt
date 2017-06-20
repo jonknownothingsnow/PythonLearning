@@ -44,3 +44,15 @@ def factorial(n):
 print factorial.__name__
 
 Python通过大量简化他的代码，结果使入门难度大幅增加。一个精心设计过的代码往往需要看很久才能懂
+
+定义decorator
+
+def log(f):        #定义装饰器高阶函数，以要装饰的函数f作为参数
+
+    def fn(x):        #内部相当于重构要装饰的函数f，重命名为fn
+
+        print 'call ' + f.__name__ + '()...'        #加特技print
+
+        return f(x)        #为了不重写原来的函数f的代码，所以用return f(x)代替原来的代码。
+
+    return fn        将被装饰过的新的函数fn返回
