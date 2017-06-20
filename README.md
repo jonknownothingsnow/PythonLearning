@@ -1,2 +1,1 @@
-# dailyforpython
-# python的学习日记
+# Python从零开始
